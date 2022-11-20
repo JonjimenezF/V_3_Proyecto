@@ -1,4 +1,3 @@
-
 package Controlador;
 
 import BD.Conexion;
@@ -38,6 +37,7 @@ public class RegistroTipoProfesion {
 
     }
 //Eliminar tipo profesion
+
     public boolean eliminarTipoProfesion(String nombre) {
         boolean flag = false;
 
@@ -45,7 +45,7 @@ public class RegistroTipoProfesion {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
 
-            String query = "DELETE FROM tipo_profesion WHERE nombre = ?";
+            String query = "DELETE FROM tipo_profesion WHERE nombreProfesion = ?";
             PreparedStatement stmt = cnx.prepareCall(query);
             stmt.setString(1, nombre);
 
@@ -65,16 +65,15 @@ public class RegistroTipoProfesion {
         return flag;
 
     }
-    
-    //Actualizar la tabla
 
+    //Actualizar la tabla
     public boolean actualizarTipoProfesion(String nombre, String nombreNew) {
 
         try {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
 
-            String query = "UPDATE tipo_profesion SET nombre = ? WHERE nombre = ?";
+            String query = "UPDATE tipo_profesion SET nombreProfesion = ? WHERE nombreProfesion = ?";
             PreparedStatement stmt = cnx.prepareCall(query);
             stmt.setString(1, nombreNew);
             stmt.setString(2, nombre);
@@ -82,6 +81,8 @@ public class RegistroTipoProfesion {
             stmt.executeUpdate();
             stmt.close();
             cnx.close();
+            System.out.println(nombreNew);
+            System.out.println(nombre);
             return true;
 
         } catch (SQLException e) {
@@ -90,19 +91,18 @@ public class RegistroTipoProfesion {
         }
     }
 
-    
-    
+
     //Buscar por nombre
+    
     public Tipo_Profesion buscarTipoProfesion(String nombre) {
         Tipo_Profesion tp = new Tipo_Profesion();
-        
-        
+
         try {
-            
+
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
 
-            String query = "SELECT * FROM tipo_profesion WHERE nombre = ? ";
+            String query = "SELECT * FROM tipo_profesion WHERE nombreProfesion = ? ";
             PreparedStatement stmt = cnx.prepareCall(query);
             stmt.setString(1, nombre);
 
@@ -113,42 +113,39 @@ public class RegistroTipoProfesion {
 
             }
 
-            stmt.executeUpdate();
+            
+            rs.close();
             stmt.close();
             cnx.close();
-        
+
         } catch (SQLException e) {
-            System.out.println("Error en la consulta SQL por nombre, " + e.getMessage());
+            System.out.println("Error en la consulta SQL por buscar nombre, " + e.getMessage());
 
         }
 
         return tp;
     }
-    
-    
-    
+
+
     //Buscar TODO
-    public List<Tipo_Profesion> buscarTodo(String nombre) {
-        
+    public List<Tipo_Profesion> buscarTodo() {
+
         List<Tipo_Profesion> lista = new ArrayList<>();
-        
-        
-        
+
         try {
-            
+
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
 
             String query = "SELECT * FROM tipo_profesion ";
             PreparedStatement stmt = cnx.prepareCall(query);
-            
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Tipo_Profesion tp = new Tipo_Profesion();
                 tp.setIdTipoProfesion(rs.getInt("idTipoProfesion"));
                 tp.setNombreProfesion(rs.getString("nombreProfesion"));
-                
+
                 lista.add(tp);
 
             }
@@ -156,9 +153,9 @@ public class RegistroTipoProfesion {
             stmt.executeUpdate();
             stmt.close();
             cnx.close();
-        
+
         } catch (SQLException e) {
-            System.out.println("Error en la consulta SQL Buscar, " + e.getMessage());
+            System.out.println("Error en la consulta SQL Buscar todo, " + e.getMessage());
 
         }
 
@@ -166,6 +163,3 @@ public class RegistroTipoProfesion {
     }
 
 }
-
-    
-
