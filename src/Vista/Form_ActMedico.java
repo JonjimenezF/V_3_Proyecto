@@ -187,7 +187,7 @@ public class Form_ActMedico extends javax.swing.JFrame {
 
     private void jbtn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_buscarActionPerformed
         // TODO add your handling code here:
-        String id = this.jtxt_run.getText();
+        int id = Integer.parseInt(this.jtxt_run.getText());
                
         RegistroMedico rm = new RegistroMedico();
         

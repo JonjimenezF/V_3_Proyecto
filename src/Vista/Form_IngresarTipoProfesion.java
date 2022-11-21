@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vista;
 
 import Controlador.RegistroTipoProfesion;
@@ -12,12 +8,12 @@ import javax.swing.JOptionPane;
  *
  * @author jimen
  */
-public class Form_IngregarTipoProfesion extends javax.swing.JFrame {
+public class Form_IngresarTipoProfesion extends javax.swing.JFrame {
 
     /**
-     * Creates new form Form_IngregarTipoProfesion
+     * Creates new form Form_IngresarTipoProfesion
      */
-    public Form_IngregarTipoProfesion() {
+    public Form_IngresarTipoProfesion() {
         initComponents();
     }
 
@@ -36,7 +32,7 @@ public class Form_IngregarTipoProfesion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jbtn_ingresar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 204));
 
@@ -63,31 +59,33 @@ public class Form_IngregarTipoProfesion extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbtn_ingresar)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(jtxt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(58, 58, 58)
-                            .addComponent(jLabel1))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtxt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel1)))
+                .addContainerGap(46, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jbtn_ingresar)
+                .addGap(138, 138, 138))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtxt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(jbtn_ingresar)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,16 +116,15 @@ public class Form_IngregarTipoProfesion extends javax.swing.JFrame {
         //CAPTURAR DATOS
         String nombre = this.jtxt_nombre.getText();
         Tipo_Profesion tp = new Tipo_Profesion(0, nombre);
-        
+
         RegistroTipoProfesion retp = new RegistroTipoProfesion();
-        
+
         if(retp.agregarTipoProfesion(tp)){
-            
-            JOptionPane.showConfirmDialog(null, "Tipo de Profesion Ingresada", "ingresar Tipo de Profesion", 1);            
-        }else{ 
-            JOptionPane.showConfirmDialog(null, "Tipo de Profesion no Ingresada", "ingresar Tipo de Profesion", 0);   
+            JOptionPane.showConfirmDialog(null, "Tipo de Profesion Ingresada", "ingresar Tipo de Profesion", 1);
+        }else{
+            JOptionPane.showConfirmDialog(null, "Tipo de Profesion no Ingresada", "ingresar Tipo de Profesion", 0);
         }
-            
+
     }//GEN-LAST:event_jbtn_ingresarActionPerformed
 
     /**
@@ -147,20 +144,20 @@ public class Form_IngregarTipoProfesion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Form_IngregarTipoProfesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Form_IngresarTipoProfesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Form_IngregarTipoProfesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Form_IngresarTipoProfesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Form_IngregarTipoProfesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Form_IngresarTipoProfesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Form_IngregarTipoProfesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Form_IngresarTipoProfesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Form_IngregarTipoProfesion().setVisible(true);
+                new Form_IngresarTipoProfesion().setVisible(true);
             }
         });
     }

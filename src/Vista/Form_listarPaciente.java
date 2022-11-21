@@ -4,6 +4,11 @@
  */
 package Vista;
 
+import Controlador.RegistroPaciente;
+import Modelo.Paciente;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author jimen
@@ -26,21 +31,89 @@ public class Form_listarPaciente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jt_Paciente = new javax.swing.JTable();
+        jbtn_mostrar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jt_Paciente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Run Paciente", "Primer nombre", "Segundo nombre", "Apellido paterno", "Apellido materno", "Edad", "Celular"
+            }
+        ));
+        jScrollPane1.setViewportView(jt_Paciente);
+
+        jbtn_mostrar.setText("Mostrar");
+        jbtn_mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_mostrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbtn_mostrar)
+                .addGap(316, 316, 316))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbtn_mostrar)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtn_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_mostrarActionPerformed
+        // TODO add your handling code here:
+        int runP;
+        String pNombre;
+        String sNombre;
+        String aPaterno;
+        String aMaterno;
+        int edad;
+        int celular;
+        
+        RegistroPaciente rm = new RegistroPaciente();
+        DefaultTableModel modelo = (DefaultTableModel) this.jt_Paciente.getModel();
+        
+        modelo.setRowCount(0);
+        
+        List<Paciente> lista = rm.buscarTodo();
+        
+        for (Paciente paciente : lista) {
+            runP = paciente.getRunPaciente();
+            pNombre = paciente.getpNombrePaciente();
+            sNombre = paciente.getsNombrePaciente();
+            aPaterno = paciente.getaPaternoPaciente();
+            aMaterno = paciente.getaMaternoPaciente();
+            edad = paciente.getEdad();
+            celular = paciente.getCelular();
+            
+            
+            modelo.addRow(new Object[]{runP,pNombre,sNombre,aPaterno,aMaterno,edad,celular});
+            
+        }
+        
+    }//GEN-LAST:event_jbtn_mostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +151,8 @@ public class Form_listarPaciente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtn_mostrar;
+    private javax.swing.JTable jt_Paciente;
     // End of variables declaration//GEN-END:variables
 }

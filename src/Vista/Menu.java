@@ -34,6 +34,7 @@ public class Menu extends javax.swing.JFrame {
         jm_agregarMedico = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -121,20 +122,43 @@ public class Menu extends javax.swing.JFrame {
         });
         jmenu_4.add(jMenuItem7);
 
+        jMenuItem8.setText("Listar");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jmenu_4.add(jMenuItem8);
+
         jMenu1.add(jmenu_4);
 
         jMenu2.setText("Paciente");
 
         jMenuItem3.setText("Agregar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuItem4.setText("Eliminar");
         jMenu2.add(jMenuItem4);
 
         jMenuItem5.setText("Actualizar");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuItem6.setText("Listar");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem6);
 
         jMenu1.add(jMenu2);
@@ -175,7 +199,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jm_agregarTipoProfesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_agregarTipoProfesionActionPerformed
         // TODO add your handling code here:
-        Form_IngregarTipoProfesion itp = new Form_IngregarTipoProfesion();
+        Form_IngresarTipoProfesion itp = new Form_IngresarTipoProfesion();
         itp.setVisible(true);
         
         
@@ -216,6 +240,30 @@ public class Menu extends javax.swing.JFrame {
         Form_listarProfesion flp = new Form_listarProfesion();
         flp.setVisible(true);
     }//GEN-LAST:event_jm_listarTipoProfesionActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        Form_IngresarPaciente fip = new Form_IngresarPaciente();
+        fip.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        Form_ActualizarPaciente fap = new Form_ActualizarPaciente();
+        fap.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        Form_listarMedico flm = new Form_listarMedico();
+        flm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        Form_listarPaciente flp = new Form_listarPaciente();
+        flp.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,6 +312,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu jm_Salir;
     private javax.swing.JMenuItem jm_actualizarTipoProfesion;

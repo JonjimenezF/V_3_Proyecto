@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -69,28 +71,6 @@ public class RegistroMedico {
     }
     
     
-    public boolean actualizarMedico(String nombre, String nombreNew) {
-
-        try {
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
-
-            String query = "UPDATE medico SET pNombre = ? WHERE pNombre = ?";
-            PreparedStatement stmt = cnx.prepareCall(query);
-            stmt.setString(1, nombreNew);
-            stmt.setString(2, nombre);
-
-            stmt.executeUpdate();
-            stmt.close();
-            cnx.close();
-            return true;
-
-        } catch (SQLException e) {
-            System.out.println("Error en la consulta SQL actualizar, " + e.getMessage());
-            return false;
-        }
-    }
-    
     //public boolean actualizarMedicop(String pnombre, String pnombreNew , String snombre, String snombreNew , String aPaterno,String aPaternoNew , String aMaterno , String aMaternoNew)
     public boolean actualizarMedicop(String id, String pnombreNew ,String snombreNew , String aPaternoNew , String aMaternoNew) {
  
@@ -118,7 +98,7 @@ public class RegistroMedico {
         }
     }
     
-    public Medico buscarMedicoN(String id) {
+    public Medico buscarMedicoN(int id) {
         Medico m = new Medico();
 
         try {
@@ -128,7 +108,7 @@ public class RegistroMedico {
 
             String query = "SELECT * FROM medico WHERE runMedico = ? ";
             PreparedStatement stmt = cnx.prepareCall(query);
-            stmt.setString(1, id);
+            stmt.setInt(1, id);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -154,5 +134,45 @@ public class RegistroMedico {
 
         return m;
     }
+    
+    
+    public List<Medico> buscarTodo() {
+
+        List<Medico> lista = new ArrayList<>();
+
+        try {
+
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+
+            String query = "SELECT * FROM medico ";
+            PreparedStatement stmt = cnx.prepareCall(query);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Medico m = new Medico();
+                m.setRunMedico(rs.getInt("runMedico"));
+                m.setpNombre(rs.getString("pNombre"));
+                m.setsNombre(rs.getString("sNombre"));
+                m.setaPaterno(rs.getString("aPaterno"));
+                m.setaMaterno(rs.getString("aMaterno"));
+                m.setIdTipoProfesion(rs.getInt("idTipoProfesion"));
+
+                lista.add(m);
+
+            }
+
+            stmt.executeUpdate();
+            stmt.close();
+            cnx.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error en la consulta SQL Buscar todo, " + e.getMessage());
+
+        }
+
+        return lista;
+    }
+
 }
 
